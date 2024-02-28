@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import CharacterEditor from './components/CharacterEditor';
+import {Button, StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import * as Notifications from 'expo-notifications';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -52,10 +53,15 @@ export default function App() {
 
     return (
       <View style={styles.container}>
+        <Image
+                style={{ width: '100%', height: '100%'}}
+                source={require('./assets/backgrounds/Xianzhou1.jpg')}
+    />
+        <CharacterEditor visibility={'flex'} />
         <TouchableOpacity style={[styles.button, { bottom: 20, right: 30, zIndex: 100, transform: [{ rotate: rot0 }]  }]} onPress={handleHud}>
           <FontAwesomeIcon icon={faPlus} style={{color: 'white'}} size={30} />
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, { bottom: 20, right: r0  }]}>
+        <TouchableOpacity style={[styles.button, { bottom: 20, right: r0  }]} >
           <FontAwesomeIcon icon={faPencil} style={{color: 'white'}} size={30} />
         </TouchableOpacity>
         <StatusBar style="auto" />
@@ -67,7 +73,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: '100%',
+    height: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -79,7 +86,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     display: 'flex',
     alignItems: 'center',
-    
     justifyContent: 'center',
     position: 'absolute',
     
